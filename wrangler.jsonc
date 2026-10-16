@@ -1,0 +1,10 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "emdash-visual-editor-example",
+	"main": "./src/worker.ts",
+	"compatibility_date": "2026-02-24",
+	"compatibility_flags": ["nodejs_compat"],
+	// Create your own: npx wrangler d1 create emdash-visual-editor-example, then paste its id here.
+	"d1_databases": [{ "binding": "DB", "database_name": "emdash-visual-editor-example", "database_id": "00000000-0000-0000-0000-000000000000" }]
+	// For image uploads: "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "emdash-visual-editor-media" }]
+}

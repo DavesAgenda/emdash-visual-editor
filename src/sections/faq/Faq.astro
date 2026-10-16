@@ -1,0 +1,13 @@
+---
+import { ed } from "../_shared/edit";
+import Section from "../_shared/Section.astro";
+import Head from "../_shared/Head.astro";
+const { value: v } = Astro.props as { value: any };
+const items = (v.items || []).filter((i: any) => i?.question);
+---
+<Section value={v} type="faq">
+	<div class="wrap faq-grid">
+		<Head v={v} kicker={v.kicker} heading={v.heading} />
+		<div>{items.map((f: any) => <details class="reveal"><summary>{f.question}</summary><p>{f.answer}</p></details>)}</div>
+	</div>
+</Section>

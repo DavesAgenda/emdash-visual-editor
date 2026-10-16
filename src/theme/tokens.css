@@ -1,0 +1,29 @@
+/* Example theme: design tokens. Bold, Warm and Luxe are token sets selected with
+   <html data-theme="…"> (set in src/layouts/Site.astro). Blocks only use these variables. */
+/* Font fallbacks (swap in your own web fonts) */
+:root{--font-display:system-ui,-apple-system,"Segoe UI",sans-serif;--font-body:system-ui,-apple-system,"Segoe UI",sans-serif;--font-mono:ui-monospace,monospace;--font-warm:Georgia,serif;--font-luxe:Georgia,serif}
+:root,[data-theme=bold]{
+ --bg:#F5F7FB;--surface:#FFFFFF;--ink:#0A1028;--muted:#46516F;--line:rgba(10,16,40,.12);
+ --brand:#FF5A1F;--brand-ink:#0A0A0A;--brand-strong:#E04A12;--accent:#FF8A57;--kicker:#0A1028;
+ --muted-bg:#E9EEF8;
+ --inv-bg:#0A1028;--inv-surface:#131D3E;--inv-ink:#FFFFFF;--inv-muted:#B4BED8;--inv-line:rgba(255,255,255,.14);--inv-kicker:#B8D4FF;
+ --font-head:var(--font-display),system-ui,sans-serif;--font-text:var(--font-body),system-ui,sans-serif;--font-code:var(--font-mono),ui-monospace,monospace;
+ --head-weight:800;--head-track:-.04em;--head-style:normal;--head-case:none;--head-lh:.95;
+ --radius:18px;--radius-sm:10px;--btn-radius:999px;--shadow:0 30px 70px -35px rgba(10,16,40,.45);
+}
+[data-theme=warm]{
+ --bg:#FBF6EF;--surface:#FFFFFF;--ink:#2B2118;--muted:#5F4E40;--line:rgba(43,33,24,.13);
+ --brand:#B4532A;--brand-ink:#FFFFFF;--brand-strong:#93421F;--accent:#E9A23B;--kicker:#93421F;
+ --muted-bg:#F4E9DC;
+ --inv-bg:#3A2A1E;--inv-surface:#4A3727;--inv-ink:#FFF8EF;--inv-muted:#E8D7C4;--inv-line:rgba(255,248,239,.16);--inv-kicker:#F6C58A;
+ --font-head:var(--font-warm),Georgia,serif;--head-weight:600;--head-track:-.02em;--head-style:normal;--head-case:none;--head-lh:1.02;
+ --radius:28px;--radius-sm:16px;--btn-radius:999px;--shadow:0 30px 70px -40px rgba(58,42,30,.45);
+}
+[data-theme=luxe]{
+ --bg:#F7F4EF;--surface:#FFFDF9;--ink:#141414;--muted:#575047;--line:rgba(20,20,20,.14);
+ --brand:#141414;--brand-ink:#F7F4EF;--brand-strong:#000000;--accent:#A88B5A;--kicker:#6E5A36;
+ --muted-bg:#EDE6D8;
+ --inv-bg:#141414;--inv-surface:#1F1F1F;--inv-ink:#F7F4EF;--inv-muted:#CFC7BA;--inv-line:rgba(247,244,239,.16);--inv-kicker:#D7BE8F;
+ --font-head:var(--font-luxe),Georgia,serif;--head-weight:500;--head-track:-.01em;--head-style:italic;--head-case:none;--head-lh:1;
+ --radius:2px;--radius-sm:2px;--btn-radius:0px;--shadow:0 30px 60px -45px rgba(0,0,0,.4);
+}

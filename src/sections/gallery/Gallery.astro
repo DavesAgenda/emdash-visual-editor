@@ -1,0 +1,20 @@
+---
+import { ed } from "../_shared/edit";
+import Section from "../_shared/Section.astro";
+import Head from "../_shared/Head.astro";
+import Media from "../_shared/Media.astro";
+const { value: v } = Astro.props as { value: any };
+const imgs = (v.images || []).filter((i: any) => i?.image);
+const editing = !!(Astro.locals as any).user;
+---
+{(imgs.length > 0 || editing) && (
+<Section value={v} type="gallery">
+	<div class="wrap">
+		<Head v={v} kicker={v.kicker} heading={v.heading} body={v.body} />
+		{imgs.length ? (
+			<ul class={`gal gal-c${v.columns || 3}`} tabindex={v.variant === "carousel" ? 0 : undefined} aria-label={v.variant === "carousel" ? "Photo carousel, scroll sideways" : undefined}>
+				{imgs.map((i: any) => <li class="reveal"><figure><Media image={i.image} alt={i.alt || i.caption || ""} class="gal-img" sizes="(max-width: 800px) 100vw, 33vw" />{i.caption && <figcaption>{i.caption}</figcaption>}</figure></li>)}
+			</ul>
+		) : <p class="gal-empty">Add photos to this gallery in the editor (visible only to signed-in editors).</p>}
+	</div>
+</Section>)}

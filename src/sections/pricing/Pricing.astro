@@ -1,0 +1,27 @@
+---
+import { ed } from "../_shared/edit";
+import { sanitizeHref } from "emdash";
+import Section from "../_shared/Section.astro";
+import Head from "../_shared/Head.astro";
+const { value: v } = Astro.props as { value: any };
+const plans = (v.plans || []).filter((p: any) => p?.name);
+const lines = (s: string) => String(s || "").split("\n").map((x) => x.trim()).filter(Boolean);
+---
+<Section value={v} type="pricing">
+	<div class="wrap">
+		<Head v={v} kicker={v.kicker} heading={v.heading} body={v.body} badge={v.placeholder ? "Placeholder" : undefined} />
+		<ul class="plans">
+			{plans.map((p: any) => (
+				<li class={`plan reveal${p.featured ? " featured" : ""}${v.placeholder ? " is-ph" : ""}`}>
+					{v.placeholder && <span class="ph-badge">Placeholder</span>}
+					<h3>{p.name}</h3>
+					{p.price && <p class="price"><b>{p.price}</b>{p.period && <span>{p.period}</span>}</p>}
+					{p.description && <p class="plan-d">{p.description}</p>}
+					{lines(p.includes).length > 0 && <ul>{lines(p.includes).map((x) => <li>{x}</li>)}</ul>}
+					{p.cta_label && p.cta_url && <a class={`btn ${p.featured ? "" : "btn-ghost"}`} href={sanitizeHref(p.cta_url)}>{p.cta_label}</a>}
+				</li>
+			))}
+		</ul>
+		{v.gst_note && <p class="fine" {...ed(Astro.locals, v, "gst_note")}>{v.gst_note}</p>}
+	</div>
+</Section>

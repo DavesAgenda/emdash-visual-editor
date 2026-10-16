@@ -1,0 +1,33 @@
+---
+import { ed } from "../_shared/edit";
+import { sanitizeHref } from "emdash";
+import Section from "../_shared/Section.astro";
+import Media from "../_shared/Media.astro";
+const { value: v, index } = Astro.props as { value: any; index: number };
+const ticker = String(v.ticker || "").split("\n").map((s) => s.trim()).filter(Boolean);
+const effect = v.effect || "none";
+const id = `hero-h-${v._key}`;
+const first = index === 0;
+---
+<Section value={v} type="hero" class={`h-${v.height || "full"} fx-${effect}${v.image ? " has-img" : ""}${first ? " is-first" : ""}`}>
+	{effect === "agent-field" && <canvas class="hero-field" aria-hidden="true"></canvas>}
+	{v.image && (
+		<div class="hero-media" data-parallax={effect === "parallax" ? "" : undefined}>
+			<Media image={v.image} fx={v.focal_x} fy={v.focal_y} class="hero-img" eager={first} sizes="100vw" />
+		</div>
+	)}
+	<div class="wrap hero-in">
+		<div class="hero-copy">
+			{v.kicker && <p class="kicker" {...ed(Astro.locals, v, "kicker")}>{v.kicker}</p>}
+			<h1 id={id} class="h-display hero-h" {...ed(Astro.locals, v, "headline")}>{v.headline}{v.headline_accent && <> <span class="accent" {...ed(Astro.locals, v, "headline_accent")}>{v.headline_accent}</span></>}</h1>
+			{v.body && <p class="lede" {...ed(Astro.locals, v, "body")}>{v.body}</p>}
+			{(v.primary_label || v.secondary_label) && (
+				<div class="ctas">
+					{v.primary_label && v.primary_url && <a class="btn" href={sanitizeHref(v.primary_url)} {...ed(Astro.locals, v, "primary_label")}>{v.primary_label} <span aria-hidden="true">→</span></a>}
+					{v.secondary_label && v.secondary_url && <a class="btn btn-ghost" href={sanitizeHref(v.secondary_url)} {...ed(Astro.locals, v, "secondary_label")}>{v.secondary_label}</a>}
+				</div>
+			)}
+			{ticker.length > 0 && <ul class="ticker" aria-label="Highlights">{ticker.map((x) => <li>{x}</li>)}</ul>}
+		</div>
+	</div>
+</Section>

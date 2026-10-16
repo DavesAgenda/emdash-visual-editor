@@ -1,0 +1,18 @@
+---
+import { ed } from "../_shared/edit";
+import Section from "../_shared/Section.astro";
+import Head from "../_shared/Head.astro";
+const { value: v } = Astro.props as { value: any };
+const items = (v.items || []).filter((i: any) => i?.value);
+const num = (s: string) => /^\d+(\.\d+)?$/.test(String(s).trim());
+---
+<Section value={v} type="stats">
+	<div class="wrap">
+		<Head v={v} kicker={v.kicker} heading={v.heading} body={v.body} />
+		<dl class="st">
+			{items.map((i: any) => (
+				<div class="st-i reveal"><dt>{i.label}</dt><dd><span data-count={v.count_up !== false && num(i.value) ? i.value : undefined}>{i.value}</span>{i.suffix}</dd></div>
+			))}
+		</dl>
+	</div>
+</Section>

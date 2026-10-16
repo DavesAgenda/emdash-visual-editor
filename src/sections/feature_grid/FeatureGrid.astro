@@ -1,0 +1,22 @@
+---
+import { ed } from "../_shared/edit";
+import { sanitizeHref } from "emdash";
+import Section from "../_shared/Section.astro";
+import Head from "../_shared/Head.astro";
+const { value: v } = Astro.props as { value: any };
+const items = (v.items || []).filter((i: any) => i?.title);
+---
+<Section value={v} type="feature_grid">
+	<div class="wrap">
+		<Head v={v} kicker={v.kicker} heading={v.heading} body={v.body} />
+		<ul class={`fg fg-c${v.columns || 3}`}>
+			{items.map((f: any, i: number) => (
+				<li class={`fg-item fg-i${i} reveal`}>
+					{f.tag && <span class="tag">{f.tag}</span>}
+					<h3>{f.link_url ? <a href={sanitizeHref(f.link_url)}>{f.title}</a> : f.title}</h3>
+					{f.description && <p>{f.description}</p>}
+				</li>
+			))}
+		</ul>
+	</div>
+</Section>

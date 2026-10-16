@@ -1,0 +1,10 @@
+.plans{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.plan{border:1.5px solid var(--s-line);border-radius:var(--radius);padding:1.8rem;background:var(--s-surface);display:flex;flex-direction:column;gap:.2rem}
+.plan.is-ph{border-style:dashed}
+.plan.featured{border:2px solid var(--s-ink)}
+.plan h3{font-family:var(--font-head);font-weight:var(--head-weight);font-style:var(--head-style);font-size:1.5rem;margin:1rem 0 .3rem}
+.price{margin:0 0 .8rem}.price b{font:var(--head-weight) 3rem var(--font-head);letter-spacing:-.04em}.price span{color:var(--s-muted);margin-left:.3rem;font-size:.9rem}
+.plan ul{padding:0;list-style:none;margin:1rem 0;display:grid;gap:.4rem}.plan li::before{content:"✓";color:var(--brand-strong);font-weight:700;margin-right:.6rem}
+.plan-d{color:var(--s-muted);margin:0}.plan .btn{margin-top:auto;align-self:flex-start}
+.blk-pricing .fine{font-size:.85rem;color:var(--s-muted);margin-top:1rem}
+.v-compact .plans{grid-template-columns:1fr}.v-compact .plan{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:1rem}.v-compact .plan h3{margin:0}

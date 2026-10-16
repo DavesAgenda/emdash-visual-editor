@@ -1,0 +1,36 @@
+---
+// Minimal layout: EmDash head/body hooks, site title, primary menu, and the CSS/JS of the sections on this page.
+import { getMenu, getSiteSettings, sanitizeHref } from "emdash";
+import { EmDashBodyEnd, EmDashBodyStart, EmDashHead } from "emdash/ui";
+import { createPublicPageContext } from "emdash/page";
+import "../theme/tokens.css";
+import "../theme/base.css";
+interface Props { title?: string; description?: string | null; content?: { collection: string; id: string; slug?: string | null }; assets?: { css: string[]; js: string[] }; offset?: boolean }
+const { title, description, content, assets = { css: [], js: [] }, offset = true } = Astro.props;
+const settings: any = (await getSiteSettings()) || {};
+const name = settings.title || "My site";
+const fullTitle = title ? `${title} · ${name}` : name;
+const menu = (await getMenu("primary").catch(() => null))?.items || [];
+const pageCtx = createPublicPageContext({ Astro, kind: content ? "content" : "custom", pageType: "website", title: fullTitle, pageTitle: title ?? name, description: description || settings.tagline || null, canonical: `${Astro.url.origin}${Astro.url.pathname}`, content: content as any, siteName: name, siteUrl: Astro.url.origin });
+---
+<!doctype html>
+<html lang="en" data-theme="bold">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{fullTitle}</title>
+	<EmDashHead page={pageCtx} />
+	{assets.css.map((href) => <link rel="stylesheet" href={href} />)}
+	{assets.js.map((src) => <script type="module" src={src} is:inline></script>)}
+</head>
+<body>
+	<EmDashBodyStart page={pageCtx} />
+	<header class="site-head">
+		<a class="brand" href="/"><span>{name}</span></a>
+		{menu.length > 0 && <nav class="site-nav" aria-label="Main"><ul>{menu.map((i: any) => <li><a href={sanitizeHref(i.url)}>{i.label}</a></li>)}</ul></nav>}
+	</header>
+	<main id="main" class={offset ? "site-main--offset" : undefined}><slot /></main>
+	<footer class="site-foot"><div class="wrap"><p class="built">Built with EmDash.</p></div></footer>
+	<EmDashBodyEnd page={pageCtx} />
+</body>
+</html>

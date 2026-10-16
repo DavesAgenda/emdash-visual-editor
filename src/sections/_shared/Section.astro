@@ -1,0 +1,13 @@
+---
+import { ed, veSection } from "./edit";
+// Shared wrapper for every block: anchor id, background scheme, layout variant, block type hook.
+interface Props { value: any; type: string; class?: string; label?: string; tag?: string }
+const { value, type, class: cls = "", label, tag = "section" } = Astro.props;
+const bg = ["default", "muted", "inverse", "brand"].includes(value?.background) ? value.background : "default";
+const variant = typeof value?.variant === "string" ? value.variant : "default";
+const id = typeof value?.anchor_id === "string" && value.anchor_id ? value.anchor_id : undefined;
+const Tag = tag as any;
+---
+<Tag id={id} class={`blk blk-${type} bg-${bg} v-${variant} ${cls}`.trim()} data-block={type} aria-label={label} {...ed(Astro.locals, value, undefined, type)} {...veSection(Astro.locals, value, type)}>
+	<slot />
+</Tag>

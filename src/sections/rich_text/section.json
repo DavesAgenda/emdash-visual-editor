@@ -1,0 +1,89 @@
+{
+ "blockType": {
+  "slug": "rich_text",
+  "label": "Rich text",
+  "category": "Text and info",
+  "description": "Paragraphs with headings, lists and links.",
+  "currentVersion": 1,
+  "versions": [
+   {
+    "version": 1,
+    "fields": [
+     {
+      "slug": "heading",
+      "label": "Heading",
+      "type": "string",
+      "defaultValue": "Your heading here"
+     },
+     {
+      "slug": "content",
+      "label": "Text",
+      "type": "portableText",
+      "defaultValue": [
+       {
+        "_type": "block",
+        "_key": "ph1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+         {
+          "_type": "span",
+          "_key": "ph1s",
+          "text": "Sample paragraph. Replace this with your own words.",
+          "marks": []
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "slug": "width",
+      "label": "Width",
+      "type": "select",
+      "validation": {
+       "options": [
+        "Narrow (easiest to read)",
+        "Wide"
+       ]
+      },
+      "defaultValue": "Narrow (easiest to read)"
+     },
+     {
+      "slug": "background",
+      "label": "Background colour",
+      "type": "select",
+      "defaultValue": "Plain",
+      "validation": {
+       "options": [
+        "Plain",
+        "Soft tint",
+        "Dark",
+        "Brand colour"
+       ]
+      }
+     },
+     {
+      "slug": "anchor_id",
+      "label": "Menu link name (optional). Lowercase, e.g. faq. A menu item linking to #faq jumps here.",
+      "type": "string",
+      "validation": {
+       "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "optionValues": {
+  "width": {
+   "Narrow (easiest to read)": "narrow",
+   "Wide": "wide"
+  },
+  "background": {
+   "Plain": "default",
+   "Soft tint": "muted",
+   "Dark": "inverse",
+   "Brand colour": "brand"
+  }
+ }
+}

@@ -1,0 +1,5 @@
+.blk.blk-cta_band{padding:clamp(3.5rem,8vw,6rem) 0}
+.cta-in{display:grid;gap:1.5rem}.cta-in .h-section{font-size:clamp(1.8rem,4vw,3.2rem);margin-bottom:.6rem}.cta-in .intro{color:var(--s-muted);margin:0;font-size:1.15rem}
+.v-banner .cta-in{text-align:center;justify-items:center;max-width:52rem}.v-banner .ctas{justify-content:center}
+.v-split .cta-in{grid-template-columns:1.4fr auto;align-items:center}
+@media (max-width:800px){.v-split .cta-in{grid-template-columns:1fr}}

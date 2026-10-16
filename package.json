@@ -1,0 +1,28 @@
+{
+  "name": "emdash-visual-editor",
+  "version": "0.1.0",
+  "description": "A side-by-side visual page editor for EmDash, with a core set of page sections.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "emdash": { "label": "Visual editor example", "seed": "seed/seed.json" },
+  "scripts": {
+    "seed": "python3 scripts/mkseed.py",
+    "dev": "astro dev",
+    "build": "python3 scripts/mkseed.py && astro build",
+    "preview": "wrangler dev -c dist/server/wrangler.json",
+    "deploy": "wrangler deploy -c dist/server/wrangler.json"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.3.4",
+    "@astrojs/react": "^6.0.5",
+    "@emdash-cms/cloudflare": "1.1.0",
+    "astro": "^7.3.2",
+    "emdash": "1.1.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "wrangler": "^4.149.0"
+  }
+}

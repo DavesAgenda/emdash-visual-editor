@@ -1,0 +1,10 @@
+---
+// EmDash image with an optional explicit focal point (keeps faces in frame when the image is cropped).
+// Without fx/fy, EmDash's own media-library focal point is used.
+import { Image } from "emdash/ui";
+interface Props { image: any; alt?: string; fx?: number | null; fy?: number | null; class?: string; eager?: boolean; sizes?: string }
+const { image, alt, fx, fy, class: cls, eager = false, sizes } = Astro.props;
+const has = Number.isFinite(fx) || Number.isFinite(fy);
+const style = has ? `object-fit:cover;object-position:${Number.isFinite(fx) ? fx : 50}% ${Number.isFinite(fy) ? fy : 50}%` : "object-fit:cover";
+---
+{image && <Image image={image} alt={alt ?? undefined} class={cls} style={style} loading={eager ? "eager" : "lazy"} fetchpriority={eager ? "high" : undefined} sizes={sizes} />}

@@ -1,0 +1,103 @@
+{
+ "blockType": {
+  "slug": "cta_band",
+  "label": "Call-to-action band",
+  "category": "Contact",
+  "description": "A bold strip with a message and button.",
+  "currentVersion": 1,
+  "versions": [
+   {
+    "version": 1,
+    "fields": [
+     {
+      "slug": "heading",
+      "label": "Heading",
+      "type": "string",
+      "required": true,
+      "defaultValue": "Your call to action here"
+     },
+     {
+      "slug": "body",
+      "label": "Intro text (optional)",
+      "type": "text",
+      "defaultValue": "One short sentence that tells visitors what to do next."
+     },
+     {
+      "slug": "primary_label",
+      "label": "Main button text",
+      "type": "string",
+      "defaultValue": "Get in touch"
+     },
+     {
+      "slug": "secondary_label",
+      "label": "Second button text (optional)",
+      "type": "string"
+     },
+     {
+      "slug": "variant",
+      "label": "Layout",
+      "type": "select",
+      "validation": {
+       "options": [
+        "Centred",
+        "Text left, buttons right"
+       ]
+      },
+      "defaultValue": "Centred"
+     },
+     {
+      "slug": "background",
+      "label": "Background colour",
+      "type": "select",
+      "defaultValue": "Brand colour",
+      "validation": {
+       "options": [
+        "Plain",
+        "Soft tint",
+        "Dark",
+        "Brand colour"
+       ]
+      }
+     },
+     {
+      "slug": "primary_url",
+      "label": "Main button link (a page like /contact, #section, or https://…)",
+      "type": "string",
+      "validation": {
+       "pattern": "^(?:$|(?:https?://|mailto:|tel:|/(?!/)|#).+)$"
+      },
+      "defaultValue": "#contact"
+     },
+     {
+      "slug": "secondary_url",
+      "label": "Second button link",
+      "type": "string",
+      "validation": {
+       "pattern": "^(?:$|(?:https?://|mailto:|tel:|/(?!/)|#).+)$"
+      }
+     },
+     {
+      "slug": "anchor_id",
+      "label": "Menu link name (optional). Lowercase, e.g. faq. A menu item linking to #faq jumps here.",
+      "type": "string",
+      "validation": {
+       "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "optionValues": {
+  "variant": {
+   "Centred": "banner",
+   "Text left, buttons right": "split"
+  },
+  "background": {
+   "Plain": "default",
+   "Soft tint": "muted",
+   "Dark": "inverse",
+   "Brand colour": "brand"
+  }
+ }
+}

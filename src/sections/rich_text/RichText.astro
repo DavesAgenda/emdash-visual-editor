@@ -1,0 +1,12 @@
+---
+import { ed } from "../_shared/edit";
+import { PortableText } from "emdash/ui";
+import Section from "../_shared/Section.astro";
+const { value: v } = Astro.props as { value: any };
+---
+<Section value={v} type="rich_text">
+	<div class={`wrap rt rt-${v.width || "narrow"}`}>
+		{v.heading && <h2 class="h-section" {...ed(Astro.locals, v, "heading")}>{v.heading}</h2>}
+		{Array.isArray(v.content) && <div class="prose"><PortableText value={v.content} /></div>}
+	</div>
+</Section>

@@ -1,0 +1,16 @@
+---
+import { ed } from "./edit";
+// Kicker + heading + intro used at the top of most blocks.
+interface Props { kicker?: string; heading?: string; body?: string; id?: string; level?: 1 | 2; class?: string; badge?: string; v?: any }
+const { kicker, heading, body, id, level = 2, class: cls = "", badge, v } = Astro.props;
+const L = Astro.locals;
+const H = level === 1 ? "h1" : "h2";
+---
+{(kicker || heading || body) && (
+	<div class={`sec-head reveal ${cls}`}>
+		{(kicker || badge) && <p class="kicker" {...ed(L, v, "kicker")}>{badge && <span class="ph-badge">{badge}</span>}{kicker}</p>}
+		{heading && <H id={id} class={level === 1 ? "h-display" : "h-section"} {...ed(L, v, "heading")}>{heading}</H>}
+		{body && <p class="intro" {...ed(L, v, "body")}>{body}</p>}
+		<slot />
+	</div>
+)}

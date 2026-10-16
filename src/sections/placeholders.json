@@ -1,0 +1,149 @@
+{
+ "_note": "Sample content for newly added sections. Written into each block type's defaultValue by scripts/apply-placeholders.py (or by hand), and used by the Visual editor to flag text the customer hasn't replaced yet. Must be obviously placeholder, never business facts.",
+ "hero": {
+  "headline": "Your headline here",
+  "body": "A sentence or two about what you offer. Replace this sample text.",
+  "primary_label": "Get in touch",
+  "primary_url": "#contact"
+ },
+ "rich_text": {
+  "heading": "Your heading here",
+  "content": [
+   {
+    "_type": "block",
+    "_key": "ph1",
+    "style": "normal",
+    "markDefs": [],
+    "children": [
+     {
+      "_type": "span",
+      "_key": "ph1s",
+      "text": "Sample paragraph. Replace this with your own words.",
+      "marks": []
+     }
+    ]
+   }
+  ]
+ },
+ "feature_grid": {
+  "heading": "Why choose us",
+  "items": [
+   {
+    "title": "Feature one",
+    "description": "Sample description. Replace with your own."
+   },
+   {
+    "title": "Feature two",
+    "description": "Sample description. Replace with your own."
+   },
+   {
+    "title": "Feature three",
+    "description": "Sample description. Replace with your own."
+   }
+  ]
+ },
+ "cta_band": {
+  "heading": "Your call to action here",
+  "body": "One short sentence that tells visitors what to do next.",
+  "primary_label": "Get in touch",
+  "primary_url": "#contact"
+ },
+ "faq": {
+  "heading": "Frequently asked questions",
+  "items": [
+   {
+    "question": "Sample question?",
+    "answer": "Sample answer. Replace this with your own."
+   },
+   {
+    "question": "Another sample question?",
+    "answer": "Another sample answer. Replace this with your own."
+   }
+  ]
+ },
+ "testimonials": {
+  "heading": "What customers say",
+  "items": [
+   {
+    "quote": "Sample quote. Replace with a real one from a customer.",
+    "author": "Customer name"
+   },
+   {
+    "quote": "Another sample quote. Replace with a real one from a customer.",
+    "author": "Customer name"
+   }
+  ]
+ },
+ "gallery": {
+  "heading": "Gallery",
+  "images": [
+   {
+    "image": {
+     "id": "",
+     "src": "/assets/placeholder.svg",
+     "alt": "Placeholder image",
+     "width": 1200,
+     "height": 800
+    },
+    "alt": "Placeholder image"
+   },
+   {
+    "image": {
+     "id": "",
+     "src": "/assets/placeholder.svg",
+     "alt": "Placeholder image",
+     "width": 1200,
+     "height": 800
+    },
+    "alt": "Placeholder image"
+   },
+   {
+    "image": {
+     "id": "",
+     "src": "/assets/placeholder.svg",
+     "alt": "Placeholder image",
+     "width": 1200,
+     "height": 800
+    },
+    "alt": "Placeholder image"
+   }
+  ]
+ },
+ "pricing": {
+  "heading": "Prices",
+  "plans": [
+   {
+    "name": "Sample plan",
+    "price": "$00",
+    "period": "per visit",
+    "description": "Sample description. Replace with your own.",
+    "includes": "Sample item\nSample item"
+   },
+   {
+    "name": "Another sample plan",
+    "price": "$00",
+    "period": "per visit",
+    "description": "Sample description. Replace with your own.",
+    "includes": "Sample item\nSample item",
+    "featured": true
+   }
+  ]
+ },
+ "stats": {
+  "heading": "By the numbers",
+  "items": [
+   {
+    "value": "00",
+    "label": "Sample stat"
+   },
+   {
+    "value": "00",
+    "label": "Another sample stat"
+   },
+   {
+    "value": "00",
+    "label": "Third sample stat"
+   }
+  ]
+ }
+}

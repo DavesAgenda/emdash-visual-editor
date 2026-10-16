@@ -1,0 +1,7 @@
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:3rem}
+.v-stacked .faq-grid{grid-template-columns:1fr;max-width:52rem}
+.blk-faq details{border-bottom:1px solid var(--s-line);padding:1.2rem 0}
+.blk-faq summary{cursor:pointer;font:700 1.2rem var(--font-head);font-style:var(--head-style);letter-spacing:-.01em;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.blk-faq summary::after{content:"+";font-weight:400;color:var(--brand-strong);transition:transform .25s}.blk-faq details[open] summary::after{transform:rotate(45deg)}.blk-faq summary::-webkit-details-marker{display:none}
+.blk-faq details p{color:var(--s-muted);margin:.8rem 0 0}
+@media (max-width:900px){.faq-grid{grid-template-columns:1fr}}

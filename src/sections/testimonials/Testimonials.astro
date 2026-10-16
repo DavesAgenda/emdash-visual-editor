@@ -1,0 +1,26 @@
+---
+import { ed } from "../_shared/edit";
+import Section from "../_shared/Section.astro";
+import Head from "../_shared/Head.astro";
+import Media from "../_shared/Media.astro";
+const { value: v } = Astro.props as { value: any };
+const items = (v.items || []).filter((i: any) => i?.quote);
+const list = v.variant === "single" ? items.slice(0, 1) : items;
+const marquee = v.variant === "marquee";
+---
+<Section value={v} type="testimonials">
+	<div class="wrap">
+		<Head v={v} kicker={v.kicker} heading={v.heading} body={v.body} />
+		<div class={marquee ? "tm-track" : ""}>
+			<ul class="tm" role="list">
+				{(marquee ? [...list, ...list] : list).map((t: any, i: number) => (
+					<li class="tm-item reveal" aria-hidden={marquee && i >= list.length ? "true" : undefined}>
+						{t.rating > 0 && <p class="stars" aria-label={`${Math.min(5, t.rating)} out of 5 stars`}>{"★".repeat(Math.min(5, t.rating))}</p>}
+						<blockquote><p>“{t.quote}”</p></blockquote>
+						<p class="who">{t.photo && <Media image={t.photo} class="tm-ph" />}<span><b>{t.author}</b>{t.role && <span>{t.role}</span>}</span></p>
+					</li>
+				))}
+			</ul>
+		</div>
+	</div>
+</Section>

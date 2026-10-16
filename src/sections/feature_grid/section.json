@@ -1,0 +1,143 @@
+{
+ "blockType": {
+  "slug": "feature_grid",
+  "label": "Feature grid",
+  "category": "Text and info",
+  "description": "Short points, e.g. why people choose you.",
+  "currentVersion": 1,
+  "versions": [
+   {
+    "version": 1,
+    "fields": [
+     {
+      "slug": "heading",
+      "label": "Heading",
+      "type": "string",
+      "defaultValue": "Why choose us"
+     },
+     {
+      "slug": "kicker",
+      "label": "Small label above the heading (optional)",
+      "type": "string"
+     },
+     {
+      "slug": "body",
+      "label": "Intro text (optional)",
+      "type": "text"
+     },
+     {
+      "slug": "items",
+      "label": "Items",
+      "type": "repeater",
+      "validation": {
+       "subFields": [
+        {
+         "slug": "tag",
+         "label": "Label",
+         "type": "string"
+        },
+        {
+         "slug": "title",
+         "label": "Title",
+         "type": "string",
+         "required": true
+        },
+        {
+         "slug": "description",
+         "label": "Description",
+         "type": "text"
+        },
+        {
+         "slug": "link_url",
+         "label": "Link (optional)",
+         "type": "url"
+        }
+       ],
+       "maxItems": 12
+      },
+      "defaultValue": [
+       {
+        "title": "Feature one",
+        "description": "Sample description. Replace with your own."
+       },
+       {
+        "title": "Feature two",
+        "description": "Sample description. Replace with your own."
+       },
+       {
+        "title": "Feature three",
+        "description": "Sample description. Replace with your own."
+       }
+      ]
+     },
+     {
+      "slug": "variant",
+      "label": "Layout",
+      "type": "select",
+      "validation": {
+       "options": [
+        "Mixed-size tiles",
+        "Cards",
+        "Simple list"
+       ]
+      },
+      "defaultValue": "Mixed-size tiles"
+     },
+     {
+      "slug": "columns",
+      "label": "Columns on desktop",
+      "type": "select",
+      "validation": {
+       "options": [
+        "2",
+        "3",
+        "4"
+       ]
+      },
+      "defaultValue": "3"
+     },
+     {
+      "slug": "background",
+      "label": "Background colour",
+      "type": "select",
+      "defaultValue": "Plain",
+      "validation": {
+       "options": [
+        "Plain",
+        "Soft tint",
+        "Dark",
+        "Brand colour"
+       ]
+      }
+     },
+     {
+      "slug": "anchor_id",
+      "label": "Menu link name (optional). Lowercase, e.g. faq. A menu item linking to #faq jumps here.",
+      "type": "string",
+      "validation": {
+       "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "optionValues": {
+  "columns": {
+   "2": "2",
+   "3": "3",
+   "4": "4"
+  },
+  "variant": {
+   "Mixed-size tiles": "bento",
+   "Cards": "cards",
+   "Simple list": "list"
+  },
+  "background": {
+   "Plain": "default",
+   "Soft tint": "muted",
+   "Dark": "inverse",
+   "Brand colour": "brand"
+  }
+ }
+}

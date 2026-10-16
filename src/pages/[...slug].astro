@@ -1,0 +1,29 @@
+---
+// Every page renders here. Pages are a list of section blocks (the "content" blocks field).
+// The Visual editor opens pages in a signed draft preview with ?vx_frame=1; only then are the editor
+// markers and the frame bridge script added.
+import { getEmDashEntry, resolveEmDashPath } from "emdash";
+import { Blocks } from "emdash/ui";
+import Site from "../layouts/Site.astro";
+import { blockComponents, normalizeBlocks, pageAssets } from "../sections/registry";
+import { FRAME_JS } from "../plugins/visual-editor/frame";
+
+const slug = Astro.params.slug || "home";
+const res = (await getEmDashEntry("pages", slug).then((r) => (r.entry ? { entry: r.entry } : null)).catch(() => null))
+	|| (await resolveEmDashPath("/" + (Astro.params.slug || "")).catch(() => null)); // drafts opened through a preview link
+if (!res?.entry) return new Response(null, { status: 404 });
+const entry: any = res.entry;
+const data: any = entry.data;
+const inFrame = Astro.url.searchParams.get("vx_frame") === "1" && Astro.url.searchParams.has("_preview");
+const raw = Array.isArray(data.content) ? data.content : [];
+const content = normalizeBlocks(raw);
+const ve = inFrame;
+if (!ve) (Astro.locals as any).vxEdit = entry.edit; // EmDash's own edit-mode markers (not inside the editor frame)
+if (ve) { (Astro.locals as any).vxFrame = true; Astro.response.headers.set("Cache-Control", "private, no-store"); }
+const assets = pageAssets(content);
+const firstFull = content[0]?._type === "hero";
+---
+<Site title={slug === "home" ? undefined : data.title} content={{ collection: "pages", id: data.id, slug: entry.id }} assets={assets} offset={!firstFull}>
+	<div id={ve ? "vx-blocks" : undefined}><Blocks value={content} components={blockComponents} /></div>
+	{ve && <script is:inline set:html={FRAME_JS} />}
+</Site>

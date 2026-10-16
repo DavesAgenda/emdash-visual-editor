@@ -1,0 +1,6 @@
+.blk.blk-stats{padding:clamp(3rem,7vw,5.5rem) 0}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;margin:0}
+.st-i{display:flex;flex-direction:column-reverse;gap:.3rem}
+.st dd{margin:0;font:var(--head-weight) clamp(2.6rem,6vw,4.4rem)/1 var(--font-head);font-style:var(--head-style);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.st dt{color:var(--s-muted)}
+.v-cards .st-i{background:var(--s-surface);border:1px solid var(--s-line);border-radius:var(--radius);padding:1.6rem}

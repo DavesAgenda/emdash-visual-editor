@@ -1,0 +1,15 @@
+---
+import { ed } from "../_shared/edit";
+import { sanitizeHref } from "emdash";
+import Section from "../_shared/Section.astro";
+const { value: v } = Astro.props as { value: any };
+---
+<Section value={v} type="cta_band">
+	<div class="wrap cta-in reveal">
+		<div><h2 class="h-section" {...ed(Astro.locals, v, "heading")}>{v.heading}</h2>{v.body && <p class="intro" {...ed(Astro.locals, v, "body")}>{v.body}</p>}</div>
+		<div class="ctas">
+			{v.primary_label && v.primary_url && <a class="btn" href={sanitizeHref(v.primary_url)} {...ed(Astro.locals, v, "primary_label")}>{v.primary_label} <span aria-hidden="true">→</span></a>}
+			{v.secondary_label && v.secondary_url && <a class="btn btn-ghost" href={sanitizeHref(v.secondary_url)} {...ed(Astro.locals, v, "secondary_label")}>{v.secondary_label}</a>}
+		</div>
+	</div>
+</Section>
